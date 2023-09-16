@@ -1,6 +1,12 @@
+import { useState } from "react";
 import CerrarBtn from "../img/cerrar.svg";
 
 export const Modal = ({ setModal, animarModal, setAnimarModal }) => {
+  const [mensaje, setMensaje] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [cantidad, setCantidad] = useState("");
+  const [categoria, setCategoria] = useState("");
+
   const ocultarModal = () => {
     setAnimarModal(false);
 
@@ -9,13 +15,25 @@ export const Modal = ({ setModal, animarModal, setAnimarModal }) => {
     }, 500);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if ([nombre, cantidad, categoria].includes("")) {
+      setMensaje("Todos los campos son obligatorios");
+      return;
+    }
+  };
+
   return (
     <div className="modal">
       <div className="cerrar-modal">
         <img src={CerrarBtn} alt="cerrar modal" onClick={ocultarModal} />
       </div>
 
-      <form className={`formulario ${animarModal ? "animar" : "cerrar"} `}>
+      <form
+        onSubmit={handleSubmit}
+        className={`formulario ${animarModal ? "animar" : "cerrar"} `}
+      >
         <legend>Nuevo Gasto</legend>
         <div className="campo">
           <label htmlFor="nombre">Nombre Gasto</label>
@@ -23,6 +41,8 @@ export const Modal = ({ setModal, animarModal, setAnimarModal }) => {
             id="nombre"
             type="text"
             placeholder="Añadir el Nombre del Gasto"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
           />
         </div>
 
@@ -32,12 +52,18 @@ export const Modal = ({ setModal, animarModal, setAnimarModal }) => {
             id="cantidad"
             type="number"
             placeholder="Añadir la cantidad del Gasto"
+            value={cantidad}
+            onChange={(e) => setCantidad(Number(e.target.value))}
           />
         </div>
 
         <div className="campo">
           <label htmlFor="categoria">Categoria</label>
-          <select id="categoria">
+          <select
+            id="categoria"
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value)}
+          >
             <option value="">--Selecciones--</option>
             <option value="ahorro">Ahorro</option>
             <option value="comida">Comida</option>
