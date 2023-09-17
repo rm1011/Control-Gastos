@@ -2,6 +2,7 @@ import { NuevoPresupuesto } from "./NuevoPresupuesto";
 import { ControlPresupuesto } from "./ControlPresupuesto";
 
 export const Header = ({
+  gastos,
   presupuesto,
   setPresupuesto,
   isValidPresupuesto,
@@ -12,7 +13,7 @@ export const Header = ({
       <h1>Planificador de Gastos</h1>
 
       {isValidPresupuesto ? (
-        <ControlPresupuesto presupuesto={presupuesto} />
+        <ControlPresupuesto gastos={gastos} presupuesto={presupuesto} />
       ) : (
         <NuevoPresupuesto
           presupuesto={presupuesto}
