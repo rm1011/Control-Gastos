@@ -1,7 +1,7 @@
 import { useState } from "react";
 import IconoNuevoGasto from "./img/nuevo-gasto.svg";
-import { Header } from "./components/Header";
 import { generarId } from "./helpers";
+import { Header } from "./components/Header";
 import { Modal } from "./components/Modal";
 import { ListadoGastos } from "./components/ListadoGastos";
 
@@ -28,8 +28,9 @@ export const App = () => {
       setModal(false);
     }, 500);
   };
+
   return (
-    <>
+    <div className={modal ? "fijar" : ""}>
       <Header
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
@@ -60,6 +61,6 @@ export const App = () => {
           guardarGasto={guardarGasto}
         />
       )}
-    </>
+    </div>
   );
 };
