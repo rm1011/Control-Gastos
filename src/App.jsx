@@ -7,7 +7,7 @@ import { ListadoGastos } from "./components/ListadoGastos";
 
 export const App = () => {
   const [gastos, setGastos] = useState([]);
-  const [presupuesto, setPresupuesto] = useState(0);
+  const [presupuesto, setPresupuesto] = useState();
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
   const [modal, setModal] = useState(false);
   const [animarModal, setAnimarModal] = useState(false);
