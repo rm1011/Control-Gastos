@@ -39,6 +39,7 @@ export const App = () => {
         gastoState.id === gasto.id ? gasto : gastoState
       );
       setGastos(gastosActualizados);
+      setGastoEditar({});
     } else {
       // nuevo gasto
       gasto.id = generarId();
@@ -93,6 +94,7 @@ export const App = () => {
           setAnimarModal={setAnimarModal}
           guardarGasto={guardarGasto}
           gastoEditar={gastoEditar}
+          setGastoEditar={setGastoEditar}
         />
       )}
     </div>
