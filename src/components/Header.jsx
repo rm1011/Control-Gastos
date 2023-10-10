@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { NuevoPresupuesto } from "./NuevoPresupuesto";
 import { ControlPresupuesto } from "./ControlPresupuesto";
 

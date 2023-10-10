@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { Mensaje } from "./Mensaje";
 import CerrarBtn from "../img/cerrar.svg";
@@ -13,6 +14,7 @@ export const Modal = ({
   const [nombre, setNombre] = useState("");
   const [cantidad, setCantidad] = useState("");
   const [categoria, setCategoria] = useState("");
+  const [fecha, setFecha] = useState("");
   const [id, setId] = useState("");
 
   useEffect(() => {
@@ -21,6 +23,7 @@ export const Modal = ({
       setCantidad(gastoEditar.cantidad);
       setCategoria(gastoEditar.categoria);
       setId(gastoEditar.id);
+      setFecha(gastoEditar.fecha);
     }
   }, [gastoEditar]);
 
@@ -42,7 +45,7 @@ export const Modal = ({
       return;
     }
 
-    guardarGasto({ nombre, cantidad, categoria, id });
+    guardarGasto({ nombre, cantidad, categoria, id, fecha });
   };
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Mensaje } from "./Mensaje";
 
@@ -18,7 +19,7 @@ export const NuevoPresupuesto = ({
 
     setMensaje("");
 
-    setIsValidPresupuesto(true)
+    setIsValidPresupuesto(true);
   };
 
   return (

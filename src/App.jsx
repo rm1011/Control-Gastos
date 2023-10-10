@@ -6,7 +6,7 @@ import { Modal } from "./components/Modal";
 import { ListadoGastos } from "./components/ListadoGastos";
 
 export const App = () => {
-  const [gastos] = useState([]);
+  const [gastos, setGastos] = useState([]);
   const [presupuesto, setPresupuesto] = useState();
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
   const [modal, setModal] = useState(false);
@@ -52,6 +52,11 @@ export const App = () => {
     }, 500);
   };
 
+  const eliminarGasto = (id) => {
+    const gastosActualizados = gastos.filter((gasto) => gasto.id !== id);
+    setGastos(gastosActualizados);
+  };
+
   return (
     <div className={modal ? "fijar" : ""}>
       <Header
@@ -65,7 +70,11 @@ export const App = () => {
       {isValidPresupuesto && (
         <>
           <main>
-            <ListadoGastos gastos={gastos} setGastoEditar={setGastoEditar} />
+            <ListadoGastos
+              gastos={gastos}
+              setGastoEditar={setGastoEditar}
+              eliminarGasto={eliminarGasto}
+            />
           </main>
           <div className="nuevo-gasto">
             <img
